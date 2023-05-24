@@ -71,6 +71,16 @@ router.get('/all', async (req, res) => {
     }
 })
 
+//Read user by id
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        res.send(user)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
 //Update user
 router.patch('/', auth, async (req, res) => {
     const updates = Object.keys(req.body)
