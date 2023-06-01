@@ -111,13 +111,13 @@ router.patch('/:id', auth, async (req, res) => {
     }
 
     try {
-        const updatedPerson = await User.findById({ _id: req.params.id })
+        const updatedPerson = await User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
 
         if (!updatedPerson) {
             res.status(404).send()
         }
-        updates.forEach((update) => req.user[update] = req.body[update])
-        await updatedPerson.save()
+        /* updates.forEach((update) => req.user[update] = req.body[update])
+        await updatedPerson.save() */
         res.send(updatedPerson)
     } catch (e) {
         res.status(400).send(e)
