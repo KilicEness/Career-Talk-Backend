@@ -17,6 +17,11 @@ const userSchema = new mongoose.Schema({
     },
     job: {
         type: String,
+        default: 'unemployee'
+    },
+    description: {
+        type: String,
+        default: 'Im a ...'
     },
     address: [{
         street: {
