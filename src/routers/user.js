@@ -227,7 +227,7 @@ router.post("/change-password", auth, async (req, res) => {
       return res.status(401).send({ error: "Mevcut şifre yanlış." });
     }
 
-    // Yeni şifreyi ayarla
+    // Yeni şifreyi ayarlaa
     user.password = newPassword;
     await user.save();
 
